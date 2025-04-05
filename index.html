@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Rahul</title>
+    <style>
+        body {
+            background-color: #ff8c00;
+            overflow: hidden;
+            text-align: center;
+        }
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background-color: red;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+        .image-container {
+            position: absolute;
+            bottom: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: moveUp 3s ease-in-out forwards;
+        }
+        @keyframes moveUp {
+            from {
+                bottom: -200px;
+            }
+            to {
+                bottom: 200px;
+            }
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+        .message {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="message">जन्म दिन की हार्दिक शुभकामनाएं।</div>
+    <div class="image-container">
+        <img src="1000156184.png" alt="Rahul's Birthday" width="200">
+    </div>
+    <script>
+        function createBalloon() {
+            const balloon = document.createElement("div");
+            balloon.classList.add("balloon");
+            document.body.appendChild(balloon);
+            
+            const colors = ["red", "blue", "yellow", "green", "purple", "orange"];
+            balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            balloon.style.left = Math.random() * window.innerWidth + "px";
+            balloon.style.bottom = "-100px";
+            
+            const duration = Math.random() * 3 + 3;
+            balloon.style.animation = `float ${duration}s infinite ease-in-out`;
+            setTimeout(() => {
+                balloon.remove();
+            }, duration * 1000);
+        }
+        
+        setInterval(createBalloon, 500);
+    </script>
+</body>
+</html>
